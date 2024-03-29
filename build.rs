@@ -199,7 +199,7 @@ fn build_v8() {
       );
     };
 
-    if target_triple == "armv7-linux-androideabi" 
+    if target_triple == "armv7-linux-androideabi"
     {
       gn_args.push(r#"target_cpu="arm""#.to_string());
       gn_args.push("use_sysroot=true".to_string());
