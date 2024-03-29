@@ -2,7 +2,7 @@ name: ci_android_v8
 
 on:
   push:
-    branches: [ "v0.60.0" ]
+    branches: [ "feat-version-v0.60.0" ]
 
 jobs:
   build:
