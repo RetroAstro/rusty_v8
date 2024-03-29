@@ -204,7 +204,7 @@ fn build_v8() {
       gn_args.push(r#"target_cpu="arm""#.to_string());
       gn_args.push("use_sysroot=true".to_string());
       maybe_install_sysroot("arm");
-      maybe_install_sysroot("amd64");
+      maybe_install_sysroot("i386");
     };
 
     if target_triple == "armv7-linux-androideabi" {
