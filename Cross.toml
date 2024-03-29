@@ -1,5 +1,5 @@
-[target.aarch64-linux-android]
-image = "cross:aarch64-linux-android-0.2.1"
+[target.armv7-linux-androideabi]
+image = "cross:armv7-linux-androideabi-0.2.1"
 
 [build.env]
 passthrough = [
