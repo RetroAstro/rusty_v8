@@ -198,6 +198,43 @@ fn build_v8() {
         &format!("{}/catapult.git", CHROMIUM_URI),
       );
     };
+
+    // armv7-linux-androideabi
+    if target_triple == "armv7-linux-androideabi"
+    {
+      gn_args.push(r#"target_cpu="arm""#.to_string());
+      gn_args.push("use_sysroot=true".to_string());
+      maybe_install_sysroot("arm");
+      maybe_install_sysroot("i386");
+    };
+
+    if target_triple == "armv7-linux-androideabi" {
+      gn_args.push(r#"v8_target_cpu="arm""#.to_string());
+      gn_args.push(r#"target_os="android""#.to_string());
+
+      gn_args.push("treat_warnings_as_errors=false".to_string());
+
+      // NDK 23 and above removes libgcc entirely.
+      // https://github.com/rust-lang/rust/pull/85806
+      maybe_clone_repo(
+        "./third_party/android_ndk",
+        "https://github.com/denoland/android_ndk.git",
+      );
+
+      static CHROMIUM_URI: &str = "https://chromium.googlesource.com";
+
+      maybe_clone_repo(
+        "./third_party/android_platform",
+        &format!(
+          "{}/chromium/src/third_party/android_platform.git",
+          CHROMIUM_URI
+        ),
+      );
+      maybe_clone_repo(
+        "./third_party/catapult",
+        &format!("{}/catapult.git", CHROMIUM_URI),
+      );
+    };
   }
 
   if target_triple.starts_with("i686-") {

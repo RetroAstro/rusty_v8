@@ -1,4 +1,4 @@
-FROM rustembedded/cross:aarch64-linux-android-0.2.1
+FROM rustembedded/cross:armv7-linux-androideabi-0.2.1
 
 RUN apt update && \
     apt install -y curl && \
