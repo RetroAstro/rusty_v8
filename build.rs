@@ -199,6 +199,18 @@ fn build_v8() {
       );
     };
 
+    // arm-unknown-linux-musleabihf
+    if target_triple == "arm-unknown-linux-musleabihf"
+    {
+      gn_args.push(r#"target_cpu="arm""#.to_string());
+      gn_args.push("use_sysroot=true".to_string());
+      maybe_install_sysroot("arm");
+      maybe_install_sysroot("i386");
+      gn_args.push(r#"v8_target_cpu="arm""#.to_string());
+      gn_args.push(r#"target_os="linux""#.to_string());
+      gn_args.push("treat_warnings_as_errors=false".to_string());
+    };
+
     // armv7-linux-androideabi
     if target_triple == "armv7-linux-androideabi"
     {

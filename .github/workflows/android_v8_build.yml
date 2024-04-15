@@ -15,11 +15,11 @@ jobs:
 
     - run: sudo apt install libglib2.0-dev
 
-    - run: rustup target add armv7-linux-androideabi
+    - run: rustup target add arm-unknown-linux-musleabihf
 
-    - run: V8_FROM_SOURCE=1 cargo build -vv --release --target armv7-linux-androideabi
+    - run: V8_FROM_SOURCE=1 cargo build -vv --release --target arm-unknown-linux-musleabihf
 
     - uses: actions/upload-artifact@v3
       with:
-        name: librusty_v8_release_armv7-linux-androideabi.a
-        path: target/armv7-linux-androideabi/release/gn_out/obj/librusty_v8.a
+        name: librusty_v8_release_arm-unknown-linux-musleabihf.a
+        path: target/arm-unknown-linux-musleabihf/release/gn_out/obj/librusty_v8.a
